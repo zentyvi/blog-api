@@ -1,5 +1,10 @@
-import prisma from "./prisma.js";
+import { prisma } from "./prisma.js";
 import bcrypt from "bcryptjs";
+
+if (!process.env.DATABASE_URL) {
+  console.log("Please provide a database url inside your .env file");
+  process.exit(1);
+}
 
 async function main() {
   console.log("Starting database cleanup...");

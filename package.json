@@ -4,10 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "nodemon backend/app.js",
+    "frontend": "npm run dev --prefix user-frontend",
+    "frontend:author": "npm run dev --prefix author-frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev:author": "concurrently \"npm run backend\" \"npm run frontend:author\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "nodemon": "^3.1.14"
+  }
 }

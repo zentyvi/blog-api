@@ -19,6 +19,7 @@ model User {
   password String
   role     Role      @default(User)
   posts    Post[]
+  likes    Like[]
   comments Comment[]
 }
 
@@ -26,7 +27,8 @@ model Post {
   id          String    @id @default(uuid())
   title       String
   content     String
-  likes       Int       @default(0)
+  likesCount  Int       @default(0)
+  likes       Like[]
   published   Boolean   @default(false)
   author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId    String
@@ -44,6 +46,17 @@ model Comment {
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
   createdAt DateTime @default(now())
+}
+
+model Like {
+  id     String @id @default(uuid())
+  count  Int    @default(0)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+
+  @@unique([userId, postId])
 }
 
 enum Role {

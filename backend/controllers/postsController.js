@@ -11,12 +11,7 @@ async function getPublishedPosts(req, res, next) {
         id: true,
         title: true,
         content: true,
-        createdAt: true,
-        likedBy: {
-          where: {
-            id: userId,
-          },
-        },
+        publishedAt: true,
         author: {
           select: { username: true },
         },
@@ -49,6 +44,12 @@ async function getPostsById(req, res, next) {
       include: {
         createdAt: false,
         published: false,
+        author: {
+          select: {
+            id: true,
+            username: true,
+          },
+        },
         comments: {
           orderBy: {
             createdAt: "desc",
@@ -68,6 +69,9 @@ async function getPostsById(req, res, next) {
         likedBy: {
           where: {
             id: userId,
+          },
+          select: {
+            id: true,
           },
         },
         _count: {
@@ -167,7 +171,7 @@ async function like(req, res, next) {
 
     return res.status(200).json({
       totalPostLikes: newLikes._count.likedBy,
-      isLiked: !isLiked,
+      isLiked: !Boolean(isLiked.likedPosts[0]),
     });
   } catch (error) {
     next(error);

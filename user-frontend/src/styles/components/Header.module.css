@@ -6,7 +6,7 @@
   background-color: var(--background-secondary);
   backdrop-filter: blur(12px);
   border-radius: 12px;
-  border: 1px solid rgba(82, 82, 82, 0.2);
+  border: 1px solid var(--border-color);
   z-index: 100;
   margin-bottom: 26px;
 }

@@ -75,6 +75,7 @@
   font-size: var(--font-size-xs);
   display: flex;
   align-items: center;
+  font-weight: 1000;
   gap: 0.5rem;
   cursor: pointer;
   width: 100%;

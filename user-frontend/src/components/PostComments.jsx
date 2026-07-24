@@ -23,10 +23,10 @@ function PostComments({ comments, postId }) {
       const result = await comment(postId, textarea);
       if (result.errors) {
         setError(result.errors);
-        console.log("ERROR");
+      } else {
+        setTextarea("");
+        window.location.reload();
       }
-      setTextarea("");
-      window.location.reload();
     } catch (err) {
       console.error(err);
     }

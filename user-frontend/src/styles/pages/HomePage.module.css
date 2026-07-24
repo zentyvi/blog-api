@@ -26,6 +26,7 @@
 }
 
 .homepage__empty {
+  grid-column: 1/-1;
   background-color: var(--background-secondary);
   border: 1px solid var(--border-color);
   border-radius: 0.8rem;
@@ -41,7 +42,7 @@
 
 @media (max-width: 710px) {
   .homepage__feed {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
 

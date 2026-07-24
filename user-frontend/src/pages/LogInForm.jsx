@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { loginUser, saveToken } from "../api/auth";
 import FormInput from "../components/FormInput";
 import { UserContext } from "../App";
@@ -11,7 +11,6 @@ function LogInForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const user = useContext(UserContext);
 
   const handleSubmit = async (e) => {
@@ -30,7 +29,6 @@ function LogInForm() {
       } else {
         setError(null);
         saveToken(result.token, result.user);
-        navigate("/");
         user.setUser(result.user);
         window.location.reload();
       }

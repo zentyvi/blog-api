@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router";
 import { UserContext } from "../App";
 import { deleteComment } from "../api/posts";
 import style from "../styles/components/Comment.module.css";
 
-function Comment({ comment }) {
+function Comment({ comment, includeLink = false }) {
   const [menuOpened, setMenuOpened] = useState(false);
   const uc = useContext(UserContext);
 
@@ -25,6 +26,14 @@ function Comment({ comment }) {
 
   const contextMenu = (
     <div className={style["contextMenu"]}>
+      {includeLink && (
+        <Link
+          to={`/posts/${comment.postId}`}
+          className={style["contextMenu__item"]}
+        >
+          <i className="fa-solid fa-share"></i> Go to
+        </Link>
+      )}
       <button
         type="button"
         className={style["contextMenu__item"]}
@@ -51,7 +60,9 @@ function Comment({ comment }) {
           <div className="avatar">
             <i className="fa-solid fa-user"></i>
           </div>
-          <span className="username">@{comment.author.username}</span>
+          <Link to={`/users/${comment.author.id}`}>
+            <span className="username">@{comment.author.username}</span>
+          </Link>
           <span className={style["comment__date"]}>
             {new Date(comment.createdAt).toLocaleDateString("en-US", {
               month: "short",

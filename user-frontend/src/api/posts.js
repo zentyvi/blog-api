@@ -62,10 +62,6 @@ async function comment(postId, comment) {
     body: JSON.stringify({ comment: comment }),
   });
 
-  if (!result.ok) {
-    throw new Error("Error during comment");
-  }
-
   const response = await result.json();
   return response;
 }

@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../App";
-import { removeToken } from "../api/auth";
 import style from "../styles/components/Header.module.css";
 
 const links = [
@@ -19,13 +18,6 @@ function Header() {
     );
   });
 
-  const handleLogOut = () => {
-    if (confirm("Are you sure that you want to log out?")) {
-      removeToken();
-      user.setUser(null);
-    }
-  };
-
   return (
     <header className={`${style["header"]}`}>
       <div className={style["header--left"]}>
@@ -38,24 +30,18 @@ function Header() {
       </div>
       {user.user ? (
         <div className={style["header--right"]}>
-          <div className={style["user-info"]}>
+          <Link
+            className={style["user-info"]}
+            to={`/users/${user.user.id}`}
+            aria-label="My profile"
+          >
             <div className={`avatar ${style["header__avatar"]}`}>
               <i className="fa-solid fa-user"></i>
             </div>
             <div className={`username ${style["header__username"]}`}>
               <span>@{user.user["username"]}</span>
             </div>
-          </div>
-          <div>
-            <button
-              className={`btn btn--danger ${style["log-out-button"]}`}
-              type="button"
-              onClick={handleLogOut}
-              aria-label="Log out"
-            >
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
-          </div>
+          </Link>
         </div>
       ) : (
         <div

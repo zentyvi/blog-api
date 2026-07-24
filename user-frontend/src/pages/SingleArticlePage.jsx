@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { getSinglePost } from "../api/posts";
 import Loader from "../components/Loader";
 import LikeButton from "../components/LikeButton";
@@ -63,9 +63,10 @@ function SingleArticlePage() {
                 })}
               </span>
               <span> by </span>
-              <span aria-label="Author's username" className="username">
+
+              <Link to={`/users/${post.author.id}`} className="username">
                 @{post.author.username}
-              </span>
+              </Link>
             </div>
           </div>
 

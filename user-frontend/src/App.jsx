@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { Outlet } from "react-router";
 import Header from "./components/Header";
+import "./styles/main.css";
 
 const UserContext = createContext(null);
 
@@ -9,8 +10,12 @@ const App = () => {
 
   return (
     <UserContext value={{ user, setUser }}>
-      <Header />
-      <Outlet />
+      <div className="gradient-banner"></div>
+      <div className="gradient-banner bottom"></div>
+      <div id="main-wrapper">
+        <Header />
+        <Outlet />
+      </div>
     </UserContext>
   );
 };

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { loginUser, saveToken } from "../api/auth";
-import FormInput from "../components/FormInut";
-import { useContext } from "react";
+import FormInput from "../components/FormInput";
 import { UserContext } from "../App";
+import Loader from "../components/Loader";
+import style from "../styles/pages/Form.module.css";
 
 function LogInForm() {
   const [username, setUsername] = useState("");
@@ -31,6 +32,7 @@ function LogInForm() {
         saveToken(result.token, result.user);
         navigate("/");
         user.setUser(result.user);
+        window.location.reload();
       }
     } catch (err) {
       setError(err);
@@ -39,23 +41,29 @@ function LogInForm() {
     }
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <main>
-      <div>
-        <div>
-          <h2>Sign Up</h2>
-          <p>
-            Do not have an account? <Link to="/log-in">Sign up</Link>
+    <main className={style["auth-page"]}>
+      <div className={style["auth-card"]}>
+        <div className={style["auth-card__header"]}>
+          <h2 className={style["auth-card__title"]}>Log in</h2>
+          <p className={style["auth-card__subtitle"]}>
+            Do not have an account?{" "}
+            <Link to="/Sign-up" className={style["auth-card__link"]}>
+              Sign up
+            </Link>
           </p>
         </div>
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit} className={style["auth-form"]}>
           <FormInput
             name="username"
             id="username"
             value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            onChange={(e) => setUsername(e.target.value)}
             isRequired={true}
             label="Username"
             error={error?.username}
@@ -66,16 +74,16 @@ function LogInForm() {
             name="password"
             id="password"
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            onChange={(e) => setPassword(e.target.value)}
             isRequired={true}
             label="Password"
             error={error?.password}
           />
 
-          <div>
-            <button type="submit">Submit</button>
+          <div className={style["auth-form__submit"]}>
+            <button type="submit" className="btn btn--primary">
+              Submit
+            </button>
           </div>
         </form>
       </div>

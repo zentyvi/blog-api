@@ -1,0 +1,125 @@
+.comment {
+  position: relative;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.8rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment__authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.comment__date {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.comment__actions {
+  position: relative;
+}
+
+.comment__menuBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+  font-size: var(--font-size-sm);
+}
+
+.comment__menuBtn:hover {
+  color: var(--text-heading);
+  background-color: var(--background-button-hover);
+}
+
+.contextMenu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-top: 0.4rem;
+  z-index: 15;
+  background-color: var(--background-button);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  border-radius: 0.6rem;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 120px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.contextMenu__item {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.4rem;
+  font-size: var(--font-size-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.contextMenu__item:hover {
+  background-color: var(--background-button-hover);
+  color: var(--text-heading);
+}
+
+.contextMenu__item--danger {
+  color: var(--danger-color);
+}
+
+.contextMenu__item--danger:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--danger-color-hover);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: transparent;
+}
+
+.comment__body {
+  word-break: break-word;
+}
+
+.comment__text {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+@media (max-width: 400px) {
+  .comment {
+    padding: 0.8rem;
+  }
+}

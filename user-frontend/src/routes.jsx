@@ -3,12 +3,15 @@ import { App } from "./App.jsx";
 import SignUpForm from "./pages/SignUpForm.jsx";
 import LogInForm from "./pages/LogInForm.jsx";
 import GuestRoute from "./components/GuestRoute.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import SingleArticlePage from "./pages/SingleArticlePage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      { index: true, element: <HomePage /> },
       {
         element: <GuestRoute />,
         children: [
@@ -16,6 +19,7 @@ const router = createBrowserRouter([
           { path: "log-in", element: <LogInForm /> },
         ],
       },
+      { path: "posts/:postId", element: <SingleArticlePage /> },
     ],
   },
 ]);

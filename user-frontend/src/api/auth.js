@@ -1,4 +1,4 @@
-const api_url = "http://localhost:3000";
+import { api_url } from "./config";
 
 async function registerUser(data) {
   const response = await fetch(`${api_url}/auth/sign-up`, {

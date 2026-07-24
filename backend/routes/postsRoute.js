@@ -1,9 +1,11 @@
 import { Router } from "express";
 import postsController from "../controllers/postsController.js";
 
-const postsRouter = Router();
+const postsRoute = Router();
 
-postsRouter.get("/", postsController.getPublishedPosts);
-postsRouter.get("/:postId", postsController.getPostsById);
+postsRoute.get("/", postsController.getPublishedPosts);
+postsRoute.get("/:postId", postsController.getPostsById);
+postsRoute.post("/:postId/like", postsController.likePost);
+postsRoute.post("/:postId/comment", postsController.commentPost);
 
-export default postsRouter;
+export default postsRoute;

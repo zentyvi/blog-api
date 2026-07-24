@@ -8,6 +8,8 @@ const validateSignUp = [
     .withMessage("Username cannot be blank")
     .isLength({ max: 20, min: 3 })
     .withMessage("Username must be between 3 and 20 characters")
+    .isAlphanumeric()
+    .withMessage("Username cannot contain special characters")
     .custom(isUsernameAvailable),
   body("email")
     .trim()

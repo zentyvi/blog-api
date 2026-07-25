@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   min-height: 200px;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 .loader {

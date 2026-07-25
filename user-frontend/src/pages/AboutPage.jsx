@@ -64,6 +64,10 @@ function AboutPage() {
                 Interactive features (Like buttons, context action menus)
               </span>
             </li>
+            <li>
+              <i className="fa-solid fa-check"></i>
+              <span>User profiles & statistics</span>
+            </li>
           </ul>
         </section>
 

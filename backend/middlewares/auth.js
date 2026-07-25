@@ -2,7 +2,9 @@ import jwt from "jsonwebtoken";
 
 function authorizeUser(req, res, next) {
   try {
-    const token = req.headers["authorization"] || null;
+    const header = req.headers["authorization"] || "";
+    const token = header.split(" ")[1];
+
     if (token) {
       jwt.verify(
         token,

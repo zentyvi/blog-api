@@ -14,10 +14,12 @@ async function getUserInfo(userId) {
 
 async function deleteUser(userId) {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
+
   const response = await fetch(`${api_url}/users/${userId}`, {
     method: "DELETE",
     headers: {
-      authorization: token,
+      authorization: bearer,
     },
   });
 

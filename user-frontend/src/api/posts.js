@@ -2,9 +2,11 @@ import { api_url } from "./config";
 
 async function getPosts() {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
+
   const result = await fetch(`${api_url}/posts`, {
     headers: {
-      authorization: token,
+      authorization: bearer,
     },
   });
   if (!result.ok) {
@@ -17,10 +19,11 @@ async function getPosts() {
 
 async function getSinglePost(postId) {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
 
   const result = await fetch(`${api_url}/posts/${postId}`, {
     headers: {
-      authorization: token || "null",
+      authorization: bearer,
     },
   });
 
@@ -34,11 +37,12 @@ async function getSinglePost(postId) {
 
 async function like(postId) {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
 
   const result = await fetch(`${api_url}/posts/${postId}/like`, {
     method: "POST",
     headers: {
-      authorization: token,
+      authorization: bearer,
     },
   });
 
@@ -52,11 +56,12 @@ async function like(postId) {
 
 async function comment(postId, comment) {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
 
   const result = await fetch(`${api_url}/posts/${postId}/comment`, {
     method: "POST",
     headers: {
-      authorization: token,
+      authorization: bearer,
       "Content-type": "application/json",
     },
     body: JSON.stringify({ comment: comment }),
@@ -68,11 +73,12 @@ async function comment(postId, comment) {
 
 async function deleteComment(commentId) {
   const token = localStorage.getItem("token");
+  const bearer = token ? `Bearer ${token}` : "";
 
   const result = await fetch(`${api_url}/comments/${commentId}`, {
     method: "DELETE",
     headers: {
-      authorization: token,
+      authorization: bearer,
     },
   });
 

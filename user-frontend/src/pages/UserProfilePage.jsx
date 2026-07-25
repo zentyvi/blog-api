@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../App";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { getUserInfo, deleteUser } from "../api/users";
+import { UserContext } from "../App";
 import { removeToken } from "../api/auth";
 import Loader from "../components/Loader";
 import UserProfileItems from "../components/UserProfileItems";
@@ -13,8 +13,9 @@ function UserProfile() {
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [navActive, setNavActive] = useState("coms");
   const [loading, setLoading] = useState(true);
-  const uc = useContext(UserContext);
   const { userId } = useParams();
+  const uc = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -62,6 +63,7 @@ function UserProfile() {
         await deleteUser(uc.user.id);
         removeToken();
         uc.setUser(null);
+        navigate("/");
         window.location.reload();
       }
     } catch (err) {

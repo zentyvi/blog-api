@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.js";
+import { protectRoute } from "../middlewares/auth.js";
 
 async function getUserById(req, res, next) {
   try {
@@ -47,6 +48,27 @@ async function getUserById(req, res, next) {
   }
 }
 
-const usersContorller = { getUserById };
+async function deleteUser(req, res, next) {
+  try {
+    const { userId } = req.params;
+    if (!userId === req.user.userId) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    const user = await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+
+    return res.status(200).json({ message: "Deletion succeed" });
+  } catch (err) {
+    next(err);
+  }
+}
+
+const userDelete = [protectRoute, deleteUser];
+
+const usersContorller = { getUserById, userDelete };
 
 export default usersContorller;

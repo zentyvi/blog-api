@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 import { useParams } from "react-router";
-import { getUserInfo } from "../api/users";
+import { getUserInfo, deleteUser } from "../api/users";
 import { removeToken } from "../api/auth";
 import Loader from "../components/Loader";
 import UserProfileItems from "../components/UserProfileItems";
@@ -52,6 +52,23 @@ function UserProfile() {
     }
   };
 
+  const handleDeletion = async () => {
+    try {
+      if (
+        confirm(
+          "Are you sure that you want to delete this account? All your comments and likes are going to be deleted as well.",
+        )
+      ) {
+        await deleteUser(uc.user.id);
+        removeToken();
+        uc.setUser(null);
+        window.location.reload();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handleNavClick = (value) => {
     setNavActive(value);
   };
@@ -64,6 +81,13 @@ function UserProfile() {
         onClick={handleLogOut}
       >
         <i className="fa-solid fa-right-from-bracket"></i> Log out
+      </button>
+      <button
+        type="button"
+        className={`${style["context-menu__item"]} ${style["context-menu__item--danger"]}`}
+        onClick={handleDeletion}
+      >
+        <i className="fa-solid fa-trash"></i> Delete
       </button>
     </div>
   );

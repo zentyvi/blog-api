@@ -63,7 +63,7 @@ function LogInForm() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             isRequired={true}
-            label="Username"
+            label="Username or email"
             error={error?.username}
           />
 

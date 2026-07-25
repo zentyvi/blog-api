@@ -116,11 +116,11 @@
 
 @media (max-width: 710px) {
   .card__body {
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 
   .card > a {
     padding: 0.8rem;
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 }

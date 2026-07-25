@@ -215,4 +215,8 @@
   .profile-card__username {
     gap: 0.4rem;
   }
+
+  .profile-stats {
+    gap: 0.8rem;
+  }
 }

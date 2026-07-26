@@ -16,7 +16,7 @@ function Comment({ comment, includeLink = false }) {
   const handleDelete = async () => {
     if (confirm("Are you sure that you want to delete this comment?")) {
       try {
-        await deleteComment(comment.id);
+        await deleteComment(comment.id, comment.postId);
         window.location.reload();
       } catch (err) {
         console.error(err);

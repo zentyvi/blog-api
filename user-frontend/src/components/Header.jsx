@@ -35,9 +35,6 @@ function Header() {
             to={`/users/${user.user.id}`}
             aria-label="My profile"
           >
-            <div className={`avatar ${style["header__avatar"]}`}>
-              <i className="fa-solid fa-user"></i>
-            </div>
             <div className={`username ${style["header__username"]}`}>
               <span>@{user.user["username"]}</span>
             </div>

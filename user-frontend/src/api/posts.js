@@ -71,16 +71,19 @@ async function comment(postId, comment) {
   return response;
 }
 
-async function deleteComment(commentId) {
+async function deleteComment(commentId, postId) {
   const token = localStorage.getItem("token");
   const bearer = token ? `Bearer ${token}` : "";
 
-  const result = await fetch(`${api_url}/comments/${commentId}`, {
-    method: "DELETE",
-    headers: {
-      authorization: bearer,
+  const result = await fetch(
+    `${api_url}/posts/${postId}/comment/${commentId}`,
+    {
+      method: "DELETE",
+      headers: {
+        authorization: bearer,
+      },
     },
-  });
+  );
 
   if (!result.ok) {
     throw new Error("Error during deleting comment");

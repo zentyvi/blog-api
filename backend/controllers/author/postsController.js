@@ -342,6 +342,7 @@ async function createNew(req, res, next) {
       title,
       content,
       published,
+      publishedAt: new Date(),
       authorId: userId,
     },
   });

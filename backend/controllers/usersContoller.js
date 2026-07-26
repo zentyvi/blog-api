@@ -51,7 +51,7 @@ async function getUserById(req, res, next) {
 async function deleteUser(req, res, next) {
   try {
     const { userId } = req.params;
-    if (!userId === req.user.userId) {
+    if (userId !== req.user.userId) {
       return res.status(403).json({ message: "Forbidden" });
     }
 

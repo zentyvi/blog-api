@@ -60,7 +60,7 @@ function UserProfile() {
           "Are you sure that you want to delete this account? All your comments and likes are going to be deleted as well.",
         )
       ) {
-        await deleteUser(uc.user.id);
+        await deleteUser(userId);
         removeToken();
         uc.setUser(null);
         navigate("/");

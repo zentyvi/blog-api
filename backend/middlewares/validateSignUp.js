@@ -22,8 +22,8 @@ const validateSignUp = [
     .trim()
     .notEmpty()
     .withMessage("password cannot be blank")
-    .isLength({ min: 4 })
-    .withMessage("Password must contain at least 4 characters"),
+    .isLength({ min: 6 })
+    .withMessage("Password must contain at least 6 characters"),
 ];
 
 async function isUsernameAvailable(value) {

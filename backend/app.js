@@ -3,11 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 
-import postsRoute from "./routes/postsRoute.js";
-import authRoute from "./routes/authRoute.js";
-import commentsRoute from "./routes/commentsRoute.js";
-import usersRoute from "./routes/usersRoute.js";
 import { authorizeUser } from "./middlewares/auth.js";
+import userRoute from "./routes/user/main.js";
 
 const app = express();
 const port = process.env.port || 3000;
@@ -22,7 +19,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(authorizeUser);
-app.use("/posts", postsRoute);
-app.use("/auth", authRoute);
-app.use("/comments", commentsRoute);
-app.use("/users", usersRoute);
+app.use("/user", userRoute);

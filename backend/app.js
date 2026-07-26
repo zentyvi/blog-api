@@ -14,13 +14,7 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}!`);
 });
 
-const validOrigins = [
-  "https://odin-blog-user.netlify.app",
-  "https://odin-blog-author.netlify.app/",
-  `http://localhost:${process.env.PORT || 3000}`,
-];
-
-app.use(cors({ origin: verifyOrigin }));
+app.use(cors());
 
 function verifyOrigin(ctx) {
   const origin = ctx.headers.origin;

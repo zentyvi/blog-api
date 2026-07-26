@@ -5,6 +5,7 @@ dotenv.config();
 
 import { authorizeUser } from "./middlewares/auth.js";
 import userRoute from "./routes/user/main.js";
+import authorRoute from "./routes/author/main.js";
 
 const app = express();
 const port = process.env.port || 3000;
@@ -20,3 +21,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(authorizeUser);
 app.use("/user", userRoute);
+app.use("/author", authorRoute);

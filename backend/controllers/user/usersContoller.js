@@ -1,5 +1,5 @@
-import { prisma } from "../lib/prisma.js";
-import { protectRoute } from "../middlewares/auth.js";
+import { prisma } from "../../lib/prisma.js";
+import { protectRoute } from "../../middlewares/auth.js";
 
 async function getUserById(req, res, next) {
   try {

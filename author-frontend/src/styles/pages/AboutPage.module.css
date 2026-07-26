@@ -1,0 +1,123 @@
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-card {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.about-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.about-card__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-section h2 {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.about-section p {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.tech-card {
+  background-color: var(--background-button);
+  border: 1px solid var(--border-color);
+  border-radius: 0.6rem;
+  padding: 1rem;
+}
+
+.tech-card h3 {
+  font-size: var(--font-size-sm);
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.tech-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tech-card li {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+}
+
+.features-list i {
+  color: var(--success-color);
+  font-size: var(--font-size-xs);
+}
+
+/* Подвал с кнопками */
+.about-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 540px) {
+  .about-card {
+    padding: 1rem;
+  }
+}

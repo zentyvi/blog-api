@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import postsRoute from "./postsRoute.js";
 import authRoute from "./authRoute.js";
 import commentsRoute from "./commentsRoute.js";

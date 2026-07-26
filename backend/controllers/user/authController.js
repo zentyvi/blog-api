@@ -1,8 +1,8 @@
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { prisma } from "../lib/prisma.js";
-import validateSignUp from "../middlewares/validateSignUp.js";
+import { prisma } from "../../lib/prisma.js";
+import validateSignUp from "../../middlewares/validateSignUp.js";
 
 async function signUp(req, res, next) {
   try {

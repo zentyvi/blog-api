@@ -1,0 +1,159 @@
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.auth-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.auth-card__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.auth-card__link {
+  color: var(--accent-color);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.auth-card__link:hover {
+  color: var(--accent-color-hover);
+  text-decoration: underline;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-form__submit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.auth-form__submit button {
+  width: 100%;
+}
+
+.auth-card__options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card__publish {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.auth-card__checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.auth-card__checkbox > label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-heading);
+}
+
+.checkbox-wrapper {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.checkbox-wrapper input {
+  outline: none;
+}
+
+.checkbox-wrapper:has(input:focus-visible) label {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 1px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  -ms-appearance: checkbox !important;
+  -o-appearance: checkbox !important;
+  appearance: checkbox !important;
+}
+
+.checkbox-wrapper label {
+  --size: 50px;
+
+  cursor: pointer;
+  width: var(--size);
+  height: calc(var(--size) / 2);
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.checkbox-wrapper label:after {
+  content: "";
+  position: absolute;
+  top: 6%;
+  left: 2.5%;
+  width: calc(50% - 5%);
+  height: calc(100% - 11%);
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.checkbox-wrapper input:checked + label {
+  background: var(--accent-color);
+}
+
+.checkbox-wrapper input:checked + label:after {
+  left: calc(100% - 2.5%);
+  transform: translateX(-100%);
+}
+
+.checkbox-wrapper label:active:after {
+  width: 55%;
+}
+
+@media (max-width: 450px) {
+  .auth-card {
+    padding: 1rem;
+  }
+}

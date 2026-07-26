@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator";
-import { prisma } from "../lib/prisma.js";
-import { protectRoute } from "../middlewares/auth.js";
-import validateComment from "../middlewares/validateComment.js";
+import { prisma } from "../../lib/prisma.js";
+import { protectRoute } from "../../middlewares/auth.js";
+import validateComment from "../../middlewares/validateComment.js";
 
 async function getPublishedPosts(req, res, next) {
   try {

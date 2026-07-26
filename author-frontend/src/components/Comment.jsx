@@ -1,0 +1,109 @@
+import { useState } from "react";
+import { Link } from "react-router";
+import { deleteComment } from "../api/posts";
+import style from "../styles/components/Comment.module.css";
+
+function Comment({ comment, includeLink = false }) {
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(comment.content);
+    setMenuOpened(false);
+  };
+
+  const handleDelete = async () => {
+    if (confirm("Are you sure that you want to delete this comment?")) {
+      try {
+        await deleteComment(comment.id, comment.postId);
+        window.location.reload();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  const contextMenu = (
+    <div className={style["contextMenu"]}>
+      {includeLink && (
+        <Link
+          to={`/posts/${comment.postId}`}
+          className={style["contextMenu__item"]}
+        >
+          <i className="fa-solid fa-share"></i> Go to
+        </Link>
+      )}
+      <button
+        type="button"
+        className={style["contextMenu__item"]}
+        onClick={handleCopy}
+      >
+        <i className="fa-solid fa-copy"></i> Copy
+      </button>
+      <button
+        type="button"
+        className={`${style["contextMenu__item"]} ${style["contextMenu__item--danger"]}`}
+        onClick={handleDelete}
+      >
+        <i className="fa-solid fa-trash"></i> Delete
+      </button>
+    </div>
+  );
+
+  return (
+    <div className={style["comment"]}>
+      <div className={style["comment__header"]}>
+        <div className={style["comment__authorInfo"]}>
+          <div className="avatar">
+            <i className="fa-solid fa-user"></i>
+          </div>
+          <Link to={`/users/${comment.author.id}`}>
+            <span className="username">@{comment.author.username}</span>
+          </Link>
+          <span className={style["comment__date"]}>
+            {new Date(comment.createdAt).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            })}
+          </span>
+        </div>
+
+        <div className={style["comment__actions"]}>
+          <button
+            type="button"
+            className={style["comment__menuBtn"]}
+            aria-label="Action menu"
+            aria-expanded={menuOpened}
+            onClick={() => {
+              setMenuOpened(() => !menuOpened);
+              const closeMenu = (e) => {
+                if (e.target.classList.contains(style["overlay"])) {
+                  setMenuOpened(false);
+                  document.removeEventListener("click", closeMenu);
+                }
+              };
+              document.addEventListener("click", closeMenu);
+            }}
+          >
+            <i className="fa-solid fa-ellipsis"></i>
+          </button>
+
+          {menuOpened ? (
+            <>
+              <div className={style["overlay"]}></div>
+              {contextMenu}
+            </>
+          ) : null}
+        </div>
+      </div>
+
+      <div className={style["comment__body"]}>
+        <p className={style["comment__text"]}>{comment.content}</p>
+      </div>
+    </div>
+  );
+}
+
+export default Comment;

@@ -1,3 +1,3 @@
-const api_url = "http://localhost:3000/user";
+const api_url = "https://odin-blog-api-uq2u.onrender.com/user";
 
 export { api_url };

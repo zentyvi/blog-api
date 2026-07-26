@@ -14,7 +14,23 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}!`);
 });
 
-app.use(cors());
+const validOrigins = [
+  "https://odin-blog-user.netlify.app",
+  "https://odin-blog-author.netlify.app/",
+  `http://localhost:${process.env.PORT || 3000}`,
+];
+
+app.use(cors({ origin: verifyOrigin }));
+
+function verifyOrigin(ctx) {
+  const origin = ctx.headers.origin;
+  if (!originIsValid(origin)) return false;
+  return origin;
+}
+
+function originIsValid(origin) {
+  return validOrigins.indexOf(origin) != -1;
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

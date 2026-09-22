@@ -31,4 +31,4 @@ The main purpose of this project was to gain practical experience in building an
 | :--------------------------- | :---------------------- |
 | React & React Router         | Node.js & Express       |
 | CSS Modules (Custom Styling) | Prisma ORM (PostgreSQL) |
-| Fetch API / Axios            | JWT (JSON Web Tokens)   |
+| Fetch API                    | JWT (JSON Web Tokens)   |

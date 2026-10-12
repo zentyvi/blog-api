@@ -11,6 +11,12 @@ A full-stack RESTful Blog application built as part of [The Odin Project](https:
 
 ---
 
+## Screenshots
+
+![Post page](./_readme-assets/image1.png)
+![My profile page](./_readme-assets/image2.png)
+![About page](./_readme-assets/image3.png)
+
 ## Project Overview
 
 The main purpose of this project was to gain practical experience in building and consuming a RESTful API. This repository contains the backend service and two separate frontend clients that interact with the API:
